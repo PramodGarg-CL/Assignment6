@@ -23,9 +23,10 @@ import android.widget.Toast;
 
 import com.kbeanie.multipicker.api.entity.ChosenImage;
 import com.skeleton.R;
+import com.skeleton.activity.DisplayResponseActivity;
+import com.skeleton.model.Response;
 import com.skeleton.retrofit.APIError;
 import com.skeleton.retrofit.ApiInterface;
-import com.skeleton.retrofit.CommonResponse;
 import com.skeleton.retrofit.MultipartParams;
 import com.skeleton.retrofit.ResponseResolver;
 import com.skeleton.retrofit.RestClient;
@@ -192,13 +193,17 @@ public class SignUpFragment extends BaseFragment implements OnClickListener {
                 .add(KEY_FRAGMENT_PROFILE_PIC, imagefile).build().getMap();
 
         ApiInterface apiInterface = RestClient.getApiInterface();
-        apiInterface.userRegister(multipartParams).enqueue(new ResponseResolver<CommonResponse>(getActivity(), true, true) {
+        apiInterface.userRegister(multipartParams).enqueue(new ResponseResolver<Response>(getActivity(), true, true) {
             @Override
-            public void success(final CommonResponse commonResponse) {
-                Toast.makeText(getContext(), commonResponse.getMessage(), Toast.LENGTH_SHORT).show();
-                if ("200".equals(commonResponse.getStatusCode())) {
+            public void success(final Response response) {
+                Log.d(TAG, "success: " + response.getStatusCode());
+                Toast.makeText(getContext(), response.getMessage(), Toast.LENGTH_SHORT).show();
+                if ("200".equals(response.getStatusCode().toString())) {
                     clearEditText(editTextFname, editTextLname, editTextPhone, editTextDOB,
                             editTextConfirmPassword, editTextEmail, editTextPassword, editTextCounteryCode);
+                    Intent intent = new Intent(getActivity(), DisplayResponseActivity.class);
+                    intent.putExtra("response", response);
+                    startActivity(intent);
 
                 }
             }

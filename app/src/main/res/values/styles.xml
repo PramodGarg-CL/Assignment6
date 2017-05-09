@@ -90,4 +90,13 @@
 
     </style>
 
+    <!--TextView-->
+    <style name="DefaultTexView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_marginTop">@dimen/spacing_normal</item>
+        <item name="android:layout_height">wrap_content</item>
+
+    </style>
+
+
 </resources>

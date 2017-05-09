@@ -3,6 +3,7 @@ package com.skeleton.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,7 @@ import com.skeleton.retrofit.ResponseResolver;
 import com.skeleton.retrofit.RestClient;
 import com.skeleton.util.ValidateEditText;
 import com.skeleton.util.customview.MaterialEditText;
+import com.skeleton.util.dialog.CustomAlertDialog;
 
 import java.util.HashMap;
 
@@ -119,7 +121,15 @@ public class SignInFragment extends BaseFragment implements View.OnClickListener
      * @return true: vaidated,else false
      */
     private boolean validateData() {
-        if (!ValidateEditText.checkEmail(editTextEmail)) {
+        if (!checkEmailOrPhone(editTextEmail)) {
+            new CustomAlertDialog.Builder(getContext())
+                    .setMessage("Please enter a valid email/phone")
+                    .setPositiveButton(R.string.text_ok, new CustomAlertDialog.CustomDialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick() {
+                        }
+                    })
+                    .show();
             return false;
         }
         if (!ValidateEditText.checkPassword(editTextPassword, false)) {
@@ -139,5 +149,26 @@ public class SignInFragment extends BaseFragment implements View.OnClickListener
             editText1.setText("");
 
         }
+    }
+
+    /**
+     * Validates editText
+     *
+     * @param editText : edittext to be validated
+     * @return : true for validated,
+     */
+    private boolean checkEmailOrPhone(final EditText editText) {
+        String email = editText.getText().toString().trim();
+        if (ValidateEditText.genericEmpty(editText)) {
+            Toast.makeText(getContext(), "", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (email.matches(Patterns.EMAIL_ADDRESS.toString())) {
+            return true;
+        }
+        if (email.matches(Patterns.PHONE.toString())) {
+            return true;
+        }
+        return false;
     }
 }

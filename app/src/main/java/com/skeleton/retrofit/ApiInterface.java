@@ -1,6 +1,8 @@
 package com.skeleton.retrofit;
 
 
+import com.skeleton.model.Response;
+
 import java.util.HashMap;
 
 import okhttp3.RequestBody;
@@ -32,7 +34,7 @@ public interface ApiInterface {
      */
     @Multipart
     @POST(USER_SIGNUP)
-    Call<CommonResponse> userRegister(@PartMap HashMap<String, RequestBody> map);
+    Call<Response> userRegister(@PartMap HashMap<String, RequestBody> map);
 
     /**
      * Api call for user Login
