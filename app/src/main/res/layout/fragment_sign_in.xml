@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/spacing_xlarge">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/frag_signup_iv"
+            style="@style/CircularImageView"
+            android:layout_gravity="center_horizontal"
+            app:civ_border_color="@color/gray_light"
+            app:civ_border_width="@dimen/circular_image_border_width"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.skeleton.util.customview.MaterialEditText
+                android:id="@+id/frag_signup_tv_fname"
+                style="@style/DeafaultEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="@string/hint_signup_fname"/>
+
+            <com.skeleton.util.customview.MaterialEditText
+                android:id="@+id/frag_signup_tv_lname"
+                style="@style/DeafaultEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="@string/hint_signup_lname"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.skeleton.util.customview.MaterialEditText
+                android:id="@+id/frag_signup_tv_country"
+                style="@style/DeafaultEditText"
+                android:layout_width="0dp"
+                android:layout_weight="0.3"
+                android:text="@string/text_signup_country"
+                app:met_maxCharacters="4"/>
+
+            <View
+                style="@style/ViewSeperator"/>
+
+            <com.skeleton.util.customview.MaterialEditText
+                android:id="@+id/frag_signup_tv_phone"
+                style="@style/DeafaultEditText"
+                android:layout_width="0dp"
+                android:layout_weight="0.7"
+                android:hint="@string/hint_signup_phone"/>
+        </LinearLayout>
+
+        <com.skeleton.util.customview.MaterialEditText
+            android:id="@+id/frag_signup_tv_email"
+            style="@style/DeafaultEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_signup_email"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/spacing_small">
+
+            <TextView
+                style="@style/CustomTextHeading.Bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_signup_gender"/>
+
+            <RadioGroup
+                android:id="@+id/frag_signup_rg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/spacing_normal"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/frag_signup_rb_male"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/radio_signup_male"/>
+
+                <RadioButton
+                    android:id="@+id/frag_signup_rb_female"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/radio_signup_female"/>
+            </RadioGroup>
+        </LinearLayout>
+
+        <com.skeleton.util.customview.MaterialEditText
+            android:id="@+id/frag_signup_tv_dob"
+            style="@style/DeafaultEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_signup_dob"/>
+
+        <com.skeleton.util.customview.MaterialEditText
+            android:id="@+id/frag_signup_tv_pass"
+            style="@style/DeafaultEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_signup_pass"/>
+
+        <com.skeleton.util.customview.MaterialEditText
+            android:id="@+id/frag_signup_tv_confpass"
+            style="@style/DeafaultEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_signup_conf_pass"/>
+
+        <Spinner
+            android:id="@+id/frag_signup_sp_orien"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_normal">
+
+        </Spinner>
+
+        <TextView
+            style="@style/RoundedTextViewPrimary"
+            android:layout_gravity="bottom|center_horizontal"
+            android:text="@string/hint_signup_btn"/>
+
+    </LinearLayout>
+</ScrollView>
