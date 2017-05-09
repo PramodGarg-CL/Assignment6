@@ -29,6 +29,7 @@ public class SplashActivity extends BaseActivity implements FCMTokenInterface {
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+        startActivity(new Intent(this, MainActivity.class));
         init();
     }
 
