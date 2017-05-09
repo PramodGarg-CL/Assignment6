@@ -44,6 +44,8 @@ import java.util.List;
 import de.hdodenhof.circleimageview.CircleImageView;
 import okhttp3.RequestBody;
 
+import static com.skeleton.fragment.SignInFragment.clearEditText;
+
 /**
  * New User -  Sign Up
  */
@@ -66,6 +68,16 @@ public class SignUpFragment extends BaseFragment implements OnClickListener {
     private String mCountryCode;
     private String mDateOfBirth;
     private File imagefile;
+
+    /**
+     * returns new instance of {@link SignUpFragment}
+     *
+     * @return : instance of {@link SignUpFragment}
+     */
+    public static SignUpFragment getInstance() {
+        return new SignUpFragment();
+
+    }
 
     @Nullable
     @Override
@@ -184,6 +196,11 @@ public class SignUpFragment extends BaseFragment implements OnClickListener {
             @Override
             public void success(final CommonResponse commonResponse) {
                 Toast.makeText(getContext(), commonResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                if ("200".equals(commonResponse.getStatusCode())) {
+                    clearEditText(editTextFname, editTextLname, editTextPhone, editTextDOB,
+                            editTextConfirmPassword, editTextEmail, editTextPassword, editTextCounteryCode);
+
+                }
             }
 
             @Override
@@ -283,16 +300,6 @@ public class SignUpFragment extends BaseFragment implements OnClickListener {
                 android.R.layout.simple_spinner_item, orientations);
         adapterOrientation.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         return adapterOrientation;
-    }
-
-    /**
-     * returns new instance of {@link SignUpFragment}
-     *
-     * @return : instance of {@link SignUpFragment}
-     */
-    public static SignUpFragment getInstance() {
-        return new SignUpFragment();
-
     }
 
     @Override

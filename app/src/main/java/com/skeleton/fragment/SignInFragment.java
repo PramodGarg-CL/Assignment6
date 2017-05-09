@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.skeleton.R;
@@ -98,6 +99,9 @@ public class SignInFragment extends BaseFragment implements View.OnClickListener
             @Override
             public void success(final CommonResponse commonResponse) {
                 Toast.makeText(getContext(), commonResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                if ("200".equals(commonResponse.getStatusCode())) {
+                    clearEditText(editTextEmail, editTextPassword);
+                }
             }
 
             @Override
@@ -123,5 +127,17 @@ public class SignInFragment extends BaseFragment implements View.OnClickListener
         }
 
         return true;
+    }
+
+    /**
+     * Clear the string in the editext
+     *
+     * @param editText : multiple edittexts to be cleared
+     */
+    public static void clearEditText(final EditText... editText) {
+        for (EditText editText1 : editText) {
+            editText1.setText("");
+
+        }
     }
 }

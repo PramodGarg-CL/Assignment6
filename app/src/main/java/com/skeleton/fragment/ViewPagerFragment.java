@@ -81,6 +81,7 @@ public class ViewPagerFragment extends BaseFragment {
                 ContextCompat.getColor(getContext(), R.color.white));
     }
 
+
     /**
      * returns new instance of {@link ViewPagerFragment}
      *
@@ -89,4 +90,5 @@ public class ViewPagerFragment extends BaseFragment {
     public static ViewPagerFragment getInstance() {
         return new ViewPagerFragment();
     }
+
 }
