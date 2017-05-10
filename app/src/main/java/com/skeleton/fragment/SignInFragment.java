@@ -24,6 +24,8 @@ import com.skeleton.util.dialog.CustomAlertDialog;
 
 import java.util.HashMap;
 
+import static com.skeleton.fragment.SignUpFragment.enableFoatingEditText;
+
 /**
  * Registered User -  Sign In
  */
@@ -50,6 +52,8 @@ public class SignInFragment extends BaseFragment implements View.OnClickListener
     private void init(final View view) {
         editTextEmail = (MaterialEditText) view.findViewById(R.id.frag_signin_et_email);
         editTextPassword = (MaterialEditText) view.findViewById(R.id.frag_signin_et_pass);
+        enableFoatingEditText(editTextEmail, editTextPassword);
+
         buttonSignIn = (Button) view.findViewById(R.id.frag_signin_bt_sign_in);
         buttonSignIn.setOnClickListener(this);
 

@@ -135,6 +135,12 @@ public class SignUpFragment extends BaseFragment implements OnClickListener {
         radioButtonMale = (RadioButton) view.findViewById(R.id.frag_signup_rb_male);
         checkBox = (CheckBox) view.findViewById(R.id.frag_signup_cb);
 
+        /*
+        Set floating label
+         */
+        enableFoatingEditText(editTextFname, editTextLname, editTextCounteryCode, editTextPhone
+                , editTextEmail, editTextDOB, editTextPassword, editTextConfirmPassword);
+
         buttonSignUp = (Button) view.findViewById(R.id.frag_signup_bt_signup);
         buttonSignUp.setOnClickListener(this);
         view.getRootView().requestFocus();
@@ -344,6 +350,17 @@ public class SignUpFragment extends BaseFragment implements OnClickListener {
         } catch (ParseException e) {
             editText.setError(getString(R.string.error_invalid_date));
             return false;
+        }
+    }
+
+    /**
+     * Enable floating label for {@link MaterialEditText}
+     *
+     * @param editTexts :list of editText
+     */
+    public static void enableFoatingEditText(final MaterialEditText... editTexts) {
+        for (MaterialEditText editText : editTexts) {
+            editText.setFloatingLabel(MaterialEditText.FLOATING_LABEL_HIGHLIGHT);
         }
     }
 }
