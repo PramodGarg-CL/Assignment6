@@ -21,6 +21,7 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.kbeanie.multipicker.api.entity.ChosenImage;
 import com.skeleton.R;
 import com.skeleton.activity.DisplayResponseActivity;
@@ -281,8 +282,14 @@ public class SignUpFragment extends BaseFragment implements OnClickListener {
                 Log.d(TAG, "loadImage: " + list.get(0).getQueryUri());
                 uriImage = Uri.parse(list.get(0).getQueryUri());
                 imagefile = new File(String.valueOf(uriImage));
+
                 if (uriImage != null) {
-                    imageView.setImageURI(uriImage);
+                    //imageView.setImageURI(uriImage);
+                    Glide.with(SignUpFragment.this)
+                            .load(uriImage)
+                            .centerCrop()
+                            .into(imageView);
+
                 }
             }
 
